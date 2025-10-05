@@ -10,8 +10,11 @@ import (
 )
 
 type Location struct {
-    Lat float64 `json:"lat"`
-    Lng float64 `json:"lng"`
+    Lat      float64 `json:"lat"`
+    Lng      float64 `json:"lng"`
+    Status   string  `json:"status"`
+    Name     string  `json:"name"`
+    Initials string  `json:"initials"`
 }
 
 type Client struct {
