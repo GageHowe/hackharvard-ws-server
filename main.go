@@ -5,6 +5,7 @@ import (
     "log"
     "net/http"
     "sync"
+    "time"
 
     "github.com/gorilla/websocket"
 )
@@ -94,6 +95,14 @@ func broadcastLocations() {
 }
 
 func main() {
+    go func() {
+        for {
+            // keepalive for render.com
+            _, err := http.Get("https://safely.today/randomurl")
+            time.Sleep(10 * time.Second)
+        }
+    }()
+    
     http.HandleFunc("/ws", wsHandler)
     log.Println("Server started on :8080")
     log.Fatal(http.ListenAndServe(":8080", nil))
