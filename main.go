@@ -98,7 +98,7 @@ func main() {
     go func() {
         for {
             // keepalive for render.com
-            _, err := http.Get("https://safely.today/randomurl")
+            _, _ := http.Get("https://safely.today/randomurl")
             time.Sleep(10 * time.Second)
         }
     }()
